@@ -1,4 +1,4 @@
-# JMAnimatableImageView
+# JMAnimatedImageView
 
 `UIImageView` subclass set up from a GIF image data, supporting variable framerates
 
