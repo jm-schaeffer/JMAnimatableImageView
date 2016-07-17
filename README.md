@@ -4,7 +4,7 @@
 
 ## Setup
 
-First instantiate your `JMAnimatedImageView` in your storyboard, xib file or in your code, and then call `setUpWithImageData()` with the GIF image NSData:
+First instantiate your `JMAnimatedImageView` in your storyboard, xib file or in your code, and then call `setUpWithImageData()` with the `GIF` image `NSData`:
 
 ```swift
 @IBOutlet private weak var animatedImageView: JMAnimatedImageView!
