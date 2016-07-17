@@ -1,6 +1,6 @@
 # JMAnimatableImageView
 
-UIImageView subclass instantiated from a GIF image data supporting variable framerates
+`UIImageView` subclass set up from a GIF image data, supporting variable framerates
 
 ## Setup
 
@@ -14,7 +14,7 @@ animatedImageView.setUpWithImageData(gifImageData)
 
 ## Animation
 
-Simply call the UIImageView animation methods `startAnimating()` and `stopAnimating()`
+Simply call the `UIImageView` animation methods `startAnimating()` and `stopAnimating()`
 
 Set the `repeat` boolean property to `true` if you want the animation to loop.
 
