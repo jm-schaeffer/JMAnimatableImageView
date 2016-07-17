@@ -6,7 +6,7 @@ UIImageView subclass instantiated from a GIF image data supporting variable fram
 
 First instantiate your `JMAnimatedImageView` in your storyboard, xib file or in your code, and then call `setUpWithImageData()` with the GIF image NSData:
 
-```
+```swift
 @IBOutlet private weak var animatedImageView: JMAnimatedImageView!
 
 animatedImageView.setUpWithImageData(gifImageData)
@@ -20,6 +20,6 @@ Set the `repeat` boolean property to `true` if you want the animation to loop.
 
 ## Clearing
 
-```
+```swift
 animatedImageView.clear()
 ```
