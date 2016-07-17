@@ -76,6 +76,7 @@ final class JMAnimatedImageView: UIImageView {
         get {
             if let imageFrames = imageFrames,
                 currentIndex = currentIndex {
+                
                 return imageFrames[currentIndex]
             } else {
                 return nil
@@ -86,6 +87,7 @@ final class JMAnimatedImageView: UIImageView {
     private class func framesFromData(data: NSData) -> [AnimatedImageFrame]? {
         guard let source = CGImageSourceCreateWithData(data, nil) else {
             print("ERROR: 🖼 GIF source unreadable")
+            
             return nil
         }
         
@@ -143,6 +145,11 @@ final class JMAnimatedImageView: UIImageView {
         setUpDisplayLink()
     }
     
+    func clear() {
+        imageFrame = nil
+        imageFrames = nil
+    }
+    
     // MARK: - CADisplayLink
     private func setUpDisplayLink() {
         if superview != nil && displayLink == nil {
@@ -177,6 +184,7 @@ final class JMAnimatedImageView: UIImageView {
     override func startAnimating() {
         guard let imageFrames = imageFrames where NSThread.isMainThread() else {
             super.startAnimating()
+            
             return
         }
         
@@ -193,6 +201,7 @@ final class JMAnimatedImageView: UIImageView {
     override func stopAnimating() {
         guard imageFrames != nil && NSThread.isMainThread() else {
             super.stopAnimating()
+            
             return
         }
         
