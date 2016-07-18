@@ -40,7 +40,6 @@ private func == (leftAnimatedImageFrame: AnimatedImageFrame, rightAnimatedImageF
 
 final class JMAnimatedImageView: UIImageView {
     private var imageFrames: [AnimatedImageFrame]?
-    private var displayLink: CADisplayLink?
     private var currentFrameRemainingDuration: NSTimeInterval = 0
     
     var repeats: Bool = false
@@ -138,6 +137,8 @@ final class JMAnimatedImageView: UIImageView {
     }
     
     private func setUpWithImageFrames(imageFrames: [AnimatedImageFrame]) {
+        previousTimestamp = nil
+        
         self.imageFrames = imageFrames
         
         imageFrame = imageFrames.first
@@ -151,13 +152,16 @@ final class JMAnimatedImageView: UIImageView {
     }
     
     // MARK: - CADisplayLink
+    private weak var displayLink: CADisplayLink?
     private func setUpDisplayLink() {
-        if superview != nil && displayLink == nil {
-            let displayLink = CADisplayLink(target: self, selector: #selector(self.dynamicType.refresh(_:)))
-            displayLink.paused = true
-            displayLink.addToRunLoop(.currentRunLoop(), forMode: NSRunLoopCommonModes)
-            self.displayLink = displayLink
+        guard superview != nil && self.displayLink == nil else {
+            return
         }
+        
+        let displayLink = CADisplayLink(target: self, selector: #selector(self.dynamicType.refresh(_:)))
+        displayLink.paused = true
+        displayLink.addToRunLoop(.currentRunLoop(), forMode: NSRunLoopCommonModes)
+        self.displayLink = displayLink
     }
     
     private var previousTimestamp: CFTimeInterval?
